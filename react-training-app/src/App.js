@@ -6,6 +6,7 @@ import './App.css';
 import {Link, Route, BrowserRouter as Router, Switch} from "react-router-dom";
 import Topics from "./components/topics";
 import Table from "./components/table";
+import Form from "./components/form";
 
 class App extends Component {
     state = {
@@ -67,6 +68,9 @@ class App extends Component {
                                 <li>
                                     <Link to="/table">Table</Link>
                                 </li>
+                                <li>
+                                    <Link to="/form">Form</Link>
+                                </li>
                             </ul>
 
                             <Switch>
@@ -75,6 +79,9 @@ class App extends Component {
                                 </Route>
                                 <Route path="/table">
                                     <Table />
+                                </Route>
+                                <Route path="/form">
+                                    <Form />
                                 </Route>
                                 <Route path="/">
                                     <Counters
