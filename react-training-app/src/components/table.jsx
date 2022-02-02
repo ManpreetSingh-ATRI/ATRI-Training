@@ -1,40 +1,8 @@
 import React from "react";
-import { useTable } from "react-table";
+import { useTable, useSortBy } from "react-table";
 
-const Table = () => {
-    const data = React.useMemo(
-        () => [
-            {
-                col1: 'Hello',
-                col2: 'World'
-            },
-            {
-                col1: 'react-table',
-                col2: 'rocks',
-            },
-            {
-                col1: 'whatever',
-                col2: 'you want',
-            },
-        ],
-        []
-    );
-
-    const columns = React.useMemo(
-        () => [
-            {
-                Header: 'Column 1',
-                accessor: 'col1',
-            },
-            {
-                Header: 'Column 2',
-                accessor: 'col2',
-            },
-        ],
-        []
-    );
-
-    const tableInstance = useTable({ columns, data });
+const Table = ({ columns, data }) => {
+    const tableInstance = useTable({ columns, data }, useSortBy);
 
     const {
         getTableProps,
@@ -44,10 +12,6 @@ const Table = () => {
         prepareRow,
     } = tableInstance;
 
-    const tableStyle = {
-        border: 'solid 1px black',
-    }
-
     return (
         <table {...getTableProps()}>
             <thead>
@@ -56,7 +20,7 @@ const Table = () => {
                     <tr {...headerGroup.getHeaderGroupProps()}>
                         {
                             headerGroup.headers.map(column => (
-                                <th {...column.getHeaderProps()} className="p-1" style={ tableStyle }>
+                                <th {...column.getHeaderProps(column.getSortByToggleProps())} className="p-2">
                                     {
                                         column.render('Header')
                                     }
@@ -76,7 +40,7 @@ const Table = () => {
                             {
                                 row.cells.map(cell => {
                                     return (
-                                        <td {...cell.getCellProps()} className="p-1" style={ tableStyle }>
+                                        <td {...cell.getCellProps()} className="p-2">
                                             {
                                                 cell.render('Cell')
                                             }

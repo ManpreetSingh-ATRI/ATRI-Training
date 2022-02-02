@@ -1,14 +1,12 @@
 import React from "react";
 
-// Stateless functional component
 const NavBar = ({ totalCounters }) => {
-    console.log("Navbar - rendered");
     return (
         <React.Fragment>
             <nav className="navbar navbar-light bg-light">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="http://localhost:8000/">
-                        Navbar
+                    <a className="navbar-brand" href="http://localhost:3000/">
+                        Task Manager
                         <span className="badge badge-pill bg-secondary m-2">
                             {totalCounters}
                         </span>
