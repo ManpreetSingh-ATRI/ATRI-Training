@@ -29,7 +29,7 @@ class NewVisitorTest(LiveServerTestCase):
                 time.sleep(0.5)
 
     def test_can_start_a_list_and_retrieve_it_later(self):
-        self.browser.get(self.live_server_url)
+        self.browser.get('http://localhost:8000')
 
         input_box = self.browser.find_element_by_id('id_new_item')
         input_box.send_keys(Keys.ENTER)
